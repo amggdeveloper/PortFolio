@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Formación | PortFolio</title>
+        {% load static %}
+        <link rel="icon" type="image/x-icon" href="{% static 'img/icono.png' %}"/>
+        <!-- Versión gratuita iconos fontawesome-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Fuentes de Google-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Hoja de estilos-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
+    </head>
+
+    <body id="page-top">
+         <!-- Navegación-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">PortFolio</span>
+                <span class="d-none d-lg-block">
+                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'img/foto.jpg' %}" alt="" />
+                </span>
+            </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {% block navbar %}
+                <ul class="navbar-nav ml-auto">
+                    <h3 class="mb-0"><span class="text-primary">PortFolio amgg</span></h3>
+                    <li class="navbar-brand"><a class="nav-link js-scroll-trigger" href="{% url 'home' %}">Proyectos</a></li>                    
+                    <li class="navbar-brand"><a class="nav-link js-scroll-trigger" href="{% url 'cv' %}">Formación</a></li>
+                    <li class="navbar-brand"><a class="nav-link js-scroll-trigger" href="{% url 'blog' %}">Blog</a></li>
+                    <li class="navbar-brand"><a class="nav-link js-scroll-trigger" href="{% url 'contact' %}">Contacto</a></li>
+                </ul>
+            {% endblock%}     
+            </div>
+        </nav>
+
+        <!-- Contenidos página Formación-->
+        <div class="container-fluid p-0">
+
+            <!-- Iniciar Aplicación-->
+            <section class="resume-section" id="init">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">Forma<span class="text-primary">ción</span></h1>
+                    <div class="subheading mb-5">
+                </div>
+                <hr>                    
+                    <h3 class="mb-0">Año de Finalización: <span class="text-primary">Titulo. Descripción (horas)</span></h3>   
+                                    
+                {% block content %}   
+                {% for formacion in cv %}  
+                <hr>            
+                    <p class="lead mb-5"><strong>{{ formacion.anioFormacion}}: <em>{{ formacion.titulo }}.</em></strong></p>
+                    <p class="lead mb-5"style="text-align: justify;">{{ formacion.texto}}</p>
+                 <hr>                                
+                {% endfor %}  
+                {% endblock %}        
+            </section>          
+        <hr class="m-0" />
+        <br>  
+
+        <!--Botón para volver hacia arriba-->
+        <div class="social-icons" align="right">
+            <a class="social-icon" href="#page-top"><i class="fas fa-chevron-circle-up"></i></a>
+        </div>
+
+        <!-- Ficheros JS para BootStrap-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Plugins para BootStrap-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Funcionalidades JS-->
+        <script src="{% static 'js/scripts.js'%}"></script>
+    </body>
+</html>
